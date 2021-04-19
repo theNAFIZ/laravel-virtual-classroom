@@ -23,7 +23,6 @@ Route::group(['prefix' => 'courses'], function () {
     Route::put('/{courseId}/edit', [App\Http\Controllers\CourseController::class, 'update'])->name('course.update');
     Route::delete('/{courseId}', [App\Http\Controllers\CourseController::class, 'destroy'])->name('course.delete');
 
-    Route::get('/{courseId}/lesson', [App\Http\Controllers\LessonController::class, 'index'])->name('lesson.index');
     Route::get('/{courseId}/lesson/create', [App\Http\Controllers\LessonController::class, 'create'])->name('lesson.create');
     Route::post('/{courseId}/lesson/create', [App\Http\Controllers\LessonController::class, 'store'])->name('lesson.store');
     Route::get('/{courseId}/lesson/{lessonId}/edit', [App\Http\Controllers\LessonController::class, 'edit'])->name('lesson.edit');

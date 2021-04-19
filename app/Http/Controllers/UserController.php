@@ -13,13 +13,19 @@ class UserController extends Controller
         return view('users.index', compact('users'));
     }
 
-    public function verify()
+    public function verify(User $user)
     {
-        return;
+        $user->update([
+            'verified' => 1
+        ]);
+
+        return redirect(route('user.view'));
     }
 
-    public function destroy()
+    public function destroy(User $user)
     {
-        return;
+        $user->delete();
+
+        return redirect(route('user.view'));
     }
 }

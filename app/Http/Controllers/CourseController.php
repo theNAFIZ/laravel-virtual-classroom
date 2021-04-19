@@ -17,7 +17,7 @@ class CourseController extends Controller
 
     public function create()
     {
-        abort_if(!auth()->user()->isAdmin || !auth()->user()->isTeacher, 403, "You don't have permission to do the operation.");
+        abort_if(!auth()->user()->isAdmin || !auth()->user()->isTeacher, 403, "You don't have permission to perform the operation.");
 
         $batches = Batch::all();
         $teachers = User::where('user_type', '=', 'Teacher');
@@ -26,6 +26,8 @@ class CourseController extends Controller
 
     public function store()
     {
+        abort_if(!auth()->user()->isAdmin || !auth()->user()->isTeacher, 403, "You don't have permission to perform the operation.");
+
         $data = request()->validate([
             'name' => ['required', 'string', 'max:60'],
             'description' => ['required', 'string', 'max:5000'],
@@ -45,23 +47,43 @@ class CourseController extends Controller
         return redirect(route('batch.index'));
     }
 
-    public function show()
+    public function show(Course $course)
     {
-        return;
+        abort_if(!auth()->user()->isAdmin || !auth()->user()->isTeacher || !$course->batch_id->is(auth()->user()->batch), 403, "You don't have permission to perform the operation.");
+
+        return view('courses.show', compact('course'));
     }
 
-    public function edit()
+    public function edit(Course $course)
     {
-        return;
+        abort_if(!auth()->user()->isAdmin || !auth()->user()->is($course->teacher), 403, "You don't have permission to perform the operation.");
+
+        return view('courses.edit', compact('course'));
     }
 
-    public function update()
+    public function update(Course $course)
     {
-        return;
+        abort_if(!auth()->user()->isAdmin || !auth()->user()->is($course->teacher), 403, "You don't have permission to perform the operation.");
+
+        $data = request()->validate([
+            'name' => ['required', 'string', 'max:60'],
+            'description' => ['required', 'string', 'max:5000'],
+            'batch_id' => ['required', 'numeric'],
+            'course_code' => ['required', 'string', 'max:10', Rule::unique('courses', 'course_code')],
+            'teacher' => ['numeric']
+        ]);
+
+        $course->update($data);
+
+        return redirect(route('course.index'));
     }
 
-    public function destroy()
+    public function destroy(Course $course)
     {
-        return;
+        abort_if(!auth()->user()->isAdmin || !auth()->user()->is($course->teacher), 403, "You don't have permission to perform the operation.");
+
+        $course->delete();
+
+        return redirect(route('course.index'));
     }
 }
