@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->integer('dept_id');
+            $table->integer('dept');
             $table->string('id_card')->unique();
             $table->boolean('verified')->default('false');
             $table->rememberToken();

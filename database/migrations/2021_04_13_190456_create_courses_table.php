@@ -16,11 +16,11 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->text('description');
             $table->foreignId('batch_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->string('subject');
             $table->string('course_code')->unique();
             $table->foreignId('teacher')
                 ->constrained('users')

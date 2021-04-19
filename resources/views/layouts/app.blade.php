@@ -24,34 +24,34 @@
     <meta name="format-detection" content="telephone=no">
 
     <!-- FAVICONS ICON ============================================= -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png"/>
+    <link rel="icon" href={{asset("images/favicon.ico")}} type="image/x-icon"/>
+    <link rel="shortcut icon" type="image/x-icon" href={{asset("images/favicon.png")}}/>
 
     <!-- MOBILE SPECIFIC ============================================= -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.min.js"></script>
-    <script src="js/respond.min.js"></script>
+<!--[if lt IE 9]>
+    <script src={{asset("js/html5shiv.min.js")}}></script>
+    <script src={{asset("js/respond.min.js")}}></script>
     <![endif]-->
 
     <!-- All PLUGINS CSS ============================================= -->
-    <link rel="stylesheet" type="text/css" href="css/assets.css">
+    <link rel="stylesheet" type="text/css" href={{asset("css/assets.css")}}>
 
     <!-- TYPOGRAPHY ============================================= -->
-    <link rel="stylesheet" type="text/css" href="css/typography.css">
+    <link rel="stylesheet" type="text/css" href={{asset("css/typography.css")}}>
 
     <!-- SHORTCODES ============================================= -->
-    <link rel="stylesheet" type="text/css" href="css/shortcodes/shortcodes.css">
+    <link rel="stylesheet" type="text/css" href={{asset("css/shortcodes/shortcodes.css")}}>
 
     <!-- STYLESHEETS ============================================= -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link class="skin" rel="stylesheet" type="text/css" href="css/color/color-1.css">
+    <link rel="stylesheet" type="text/css" href={{asset("css/style.css")}}>
+    <link class="skin" rel="stylesheet" type="text/css" href={{asset("css/color/color-1.css")}}>
 
     <!-- REVOLUTION SLIDER CSS ============================================= -->
-    <link rel="stylesheet" type="text/css" href="vendors/revolution/css/layers.css">
-    <link rel="stylesheet" type="text/css" href="vendors/revolution/css/settings.css">
-    <link rel="stylesheet" type="text/css" href="vendors/revolution/css/navigation.css">
+    <link rel="stylesheet" type="text/css" href={{asset("vendors/revolution/css/layers.css")}}>
+    <link rel="stylesheet" type="text/css" href={{asset("vendors/revolution/css/settings.css")}}>
+    <link rel="stylesheet" type="text/css" href={{asset("vendors/revolution/css/navigation.css")}}>
     <!-- REVOLUTION SLIDER END -->
 </head>
 <body id="bg">
@@ -344,34 +344,34 @@
 </div>
 
 <!-- External JavaScripts -->
-<script src="js/jquery.min.js"></script>
-<script src="vendors/bootstrap/js/popper.min.js"></script>
-<script src="vendors/bootstrap/js/bootstrap.min.js"></script>
-<script src="vendors/bootstrap-select/bootstrap-select.min.js"></script>
-<script src="vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
-<script src="vendors/magnific-popup/magnific-popup.js"></script>
-<script src="vendors/counter/waypoints-min.js"></script>
-<script src="vendors/counter/counterup.min.js"></script>
-<script src="vendors/imagesloaded/imagesloaded.js"></script>
-<script src="vendors/masonry/masonry.js"></script>
-<script src="vendors/masonry/filter.js"></script>
-<script src="vendors/owl-carousel/owl.carousel.js"></script>
-<script src="js/functions.js"></script>
-<script src="js/contact.js"></script>
-<script src='vendors/switcher/switcher.js'></script>
+<script src={{asset("js/jquery.min.js")}}></script>
+<script src={{asset("vendors/bootstrap/js/popper.min.js")}}></script>
+<script src={{asset("vendors/bootstrap/js/bootstrap.min.js")}}></script>
+<script src={{asset("vendors/bootstrap-select/bootstrap-select.min.js")}}></script>
+<script src={{asset("vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js")}}></script>
+<script src={{asset("vendors/magnific-popup/magnific-popup.js")}}></script>
+<script src={{asset("vendors/counter/waypoints-min.js")}}></script>
+<script src={{asset("vendors/counter/counterup.min.js")}}></script>
+<script src={{asset("vendors/imagesloaded/imagesloaded.js")}}></script>
+<script src={{asset("vendors/masonry/masonry.js")}}></script>
+<script src={{asset("vendors/masonry/filter.js")}}></script>
+<script src={{asset("vendors/owl-carousel/owl.carousel.js")}}></script>
+<script src={{asset("js/functions.js")}}></script>
+<script src={{asset("js/contact.js")}}></script>
+<script src={{asset('vendors/switcher/switcher.js')}}></script>
 <!-- Revolution JavaScripts Files -->
-<script src="vendors/revolution/js/jquery.themepunch.tools.min.js"></script>
-<script src="vendors/revolution/js/jquery.themepunch.revolution.min.js"></script>
+<script src={{asset("vendors/revolution/js/jquery.themepunch.tools.min.js")}}></script>
+<script src={{asset("vendors/revolution/js/jquery.themepunch.revolution.min.js")}}></script>
 <!-- Slider revolution 5.0 Extensions  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-<script src="vendors/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-<script src="vendors/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-<script src="vendors/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-<script src="vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-<script src="vendors/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-<script src="vendors/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-<script src="vendors/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-<script src="vendors/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-<script src="vendors/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script src={{asset("vendors/revolution/js/extensions/revolution.extension.actions.min.js")}}></script>
+<script src={{asset("vendors/revolution/js/extensions/revolution.extension.carousel.min.js")}}></script>
+<script src={{asset("vendors/revolution/js/extensions/revolution.extension.kenburn.min.js")}}></script>
+<script src={{asset("vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js")}}></script>
+<script src={{asset("vendors/revolution/js/extensions/revolution.extension.migration.min.js")}}></script>
+<script src={{asset("vendors/revolution/js/extensions/revolution.extension.navigation.min.js")}}></script>
+<script src={{asset("vendors/revolution/js/extensions/revolution.extension.parallax.min.js")}}></script>
+<script src={{asset("vendors/revolution/js/extensions/revolution.extension.slideanims.min.js")}}></script>
+<script src={{asset("vendors/revolution/js/extensions/revolution.extension.video.min.js")}}></script>
 <script>
     jQuery(document).ready(function () {
         var ttrevapi;
