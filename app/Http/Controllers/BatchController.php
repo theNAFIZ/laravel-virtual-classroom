@@ -37,19 +37,35 @@ class BatchController extends Controller
         return redirect(route('batch.index'));
     }
 
-    public function edit()
+    public function edit(Batch $batch)
     {
-        return;
+        abort_if(!auth()->user()->isAdmin, 403, "You don't have permission to do the operation.");
+
+        return view('batches.edit', compact('batch'));
     }
 
-    public function update()
+    public function update(Batch $batch)
     {
-        return;
+        abort_if(!auth()->user()->isAdmin, 403, "You don't have permission to do the operation.");
+
+        $data = request()->validate([
+            'title' => ['required', 'string', 'max:20'],
+            'session' => ['required', 'string', 'max:10'],
+            'dept' => ['required', 'string', 'max:10'],
+        ]);
+
+        $batch->update($data);
+
+        return redirect(route('batch.index'));
     }
 
-    public function destroy()
+    public function destroy(Batch $batch)
     {
-        return;
+        abort_if(!auth()->user()->isAdmin, 403, "You don't have permission to do the operation.");
+
+        $batch->delete();
+
+        return redirect(route('batch.index'));
     }
 
 }
