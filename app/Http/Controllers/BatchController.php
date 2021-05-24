@@ -10,6 +10,7 @@ class BatchController extends Controller
     public function index()
     {
         $batches = Batch::all();
+
         return view('batches.index', compact('batches'));
     }
 
@@ -20,7 +21,7 @@ class BatchController extends Controller
 
     public function store()
     {
-        abort_if(!auth()->user()->isAdmin, 403, "You don't have permission to do the operation.");
+        abort_if(!auth()->user()->isAdmin(), 403, "You don't have permission to do the operation.");
 
         $data = request()->validate([
             'title' => ['required', 'string', 'max:20'],
@@ -39,14 +40,14 @@ class BatchController extends Controller
 
     public function edit(Batch $batch)
     {
-        abort_if(!auth()->user()->isAdmin, 403, "You don't have permission to do the operation.");
+        abort_if(!auth()->user()->isAdmin(), 403, "You don't have permission to do the operation.");
 
         return view('batches.edit', compact('batch'));
     }
 
     public function update(Batch $batch)
     {
-        abort_if(!auth()->user()->isAdmin, 403, "You don't have permission to do the operation.");
+        abort_if(!auth()->user()->isAdmin(), 403, "You don't have permission to do the operation.");
 
         $data = request()->validate([
             'title' => ['required', 'string', 'max:20'],

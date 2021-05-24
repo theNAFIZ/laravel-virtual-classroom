@@ -4,15 +4,16 @@
     <main class="ttr-wrapper">
         <div class="container-fluid bg-gray">
             <div class="row">
-                <!-- Your Profile Views Chart -->
+                <!-- Course Edit Chart -->
                 <div class="col-lg-12 m-b30">
                     <div class="widget-box">
                         <div class="wc-title">
-                            <h4>Add New Course</h4>
+                            <h4>Edit Course</h4>
                         </div>
                         <div class="widget-inner">
-                            <form class="edit-profile m-b30" action="{{route('course.store')}}" method="POST">
+                            <form class="edit-profile m-b30" method="POST" action="{{route('course.update', $course)}}">
                                 @csrf
+                                @method('PUT')
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="ml-auto">
@@ -20,13 +21,12 @@
                                         </div>
                                     </div>
                                     <div class="form-group col-6">
-                                        <label for="title" class="col-form-label">Course Title</label>
+                                        <label for="name" class="col-form-label">Course Title</label>
                                         <div>
-                                            <input class="form-control" id="title" name="title" type="text" value="">
-                                            @error('title')
-                                            <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                                            <input class="form-control" id="name" name="name" type="text"
+                                                   value="{{$course->name}}">
+                                            @error('name')
+                                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                             @enderror
                                         </div>
                                     </div>
@@ -40,9 +40,7 @@
                                                 @endforeach
                                             </select>
                                             @error('batch_id')
-                                            <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                             @enderror
                                         </div>
                                     </div>
@@ -50,15 +48,13 @@
                                         <label for="course_code" class="col-form-label">Course Code</label>
                                         <div>
                                             <input name="course_code" id="course_code" class="form-control" type="text"
-                                                   value="">
+                                                   value="{{$course->course_code}}">
                                             @error('course_code')
-                                            <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                             @enderror
                                         </div>
                                     </div>
-                                    @if(auth()->user()->user_type=='Admin')
+                                    @if(auth()->user()->isAdmin())
                                         <div class="form-group col-6">
                                             <label for="teacher" class="col-form-label">Teacher</label>
                                             <div>
@@ -70,9 +66,8 @@
                                                     @endforeach
                                                 </select>
                                                 @error('teacher')
-                                                <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                                                <span class="invalid-feedback"
+                                                      role="alert"><strong>{{ $message }}</strong></span>
                                                 @enderror
                                             </div>
                                         </div>
@@ -81,23 +76,30 @@
                                         <label for="description" class="col-form-label">Course Description</label>
                                         <div>
                                             <textarea name="description" id="description"
-                                                      class="form-control"></textarea>
+                                                      class="form-control">{{$course->description}}</textarea>
                                             @error('description')
-                                            <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button type="submit" class="btn">Save</button>
+                                        <button type="submit" class="btn">Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <form class="edit-profile m-b30" method="POST" action="{{route('course.delete', $course)}}">
+                                @csrf
+                                @method('delete')
+                                <div class="row">
+                                    <div class="col-12">
+                                        <button type="submit" class="btn">Delete</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                <!-- Your Profile Views Chart END-->
+                <!-- Course Edit Chart END-->
             </div>
         </div>
     </main>

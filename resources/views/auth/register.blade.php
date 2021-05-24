@@ -89,15 +89,15 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="batch_id"
+                                <label for="dept"
                                        class="col-md-4 col-form-label text-md-right">{{ __('Department') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="dept_id" type="text"
-                                           class="form-control @error('dept_id') is-invalid @enderror" name="dept_id"
-                                           value="{{ old('dept_id') }}" required autocomplete="dept_id" autofocus>
+                                    <input id="dept" type="text"
+                                           class="form-control @error('dept') is-invalid @enderror" name="dept"
+                                           value="{{ old('dept') }}" required autocomplete="dept" autofocus>
 
-                                    @error('dept_id')
+                                    @error('dept')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

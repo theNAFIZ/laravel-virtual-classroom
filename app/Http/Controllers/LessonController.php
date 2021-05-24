@@ -12,7 +12,7 @@ class LessonController extends Controller
     {
         abort_if(!$course->teacher()->is(auth()->user()), 403, "You don't have permission to perform the operation.");
 
-        return view('lesson.create');
+        return view('lessons.create');
     }
 
     public function store(Course $course)
@@ -39,16 +39,15 @@ class LessonController extends Controller
 
     public function show(Course $course, Lesson $lesson)
     {
-        abort_if(!auth()->user()->isAdmin || !auth()->user()->isTeacher || !$course->batch_id->is(auth()->user()->batch), 403, "You don't have permission to watch the lesson.");
-
-        return view('lesson.show', compact('lesson'));
+        //abort_if(!auth()->user()->isAdmin || !auth()->user()->isTeacher || !$course->batch_id->is(auth()->user()->batch), 403, "You don't have permission to watch the lesson.");
+        return view('lessons.show', compact('lesson'));
     }
 
     public function edit(Course $course, Lesson $lesson)
     {
         abort_if(!$course->teacher()->is(auth()->user()), 403, "You don't have permission to perform the operation.");
 
-        return view('lesson.edit', compact('lesson'));
+        return view('lessons.edit', compact('lesson'));
     }
 
     public function update(Course $course, Lesson $lesson)

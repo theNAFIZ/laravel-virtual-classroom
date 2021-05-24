@@ -31,8 +31,8 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'batch_id' => ['string'],
-            'dept_id' => ['required', 'numeric', 'min:1', 'max:10'],
-            'id_card' => ['required', 'unique:users'],
+            'dept' => ['required', 'string', 'max:10'],
+            'id_card' => ['required', 'string', 'unique:users'],
         ]);
     }
 
@@ -44,7 +44,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'batch_id' => $data['batch_id'],
-            'dept_id' => $data['dept_id'],
+            'dept' => $data['dept'],
             'id_card' => $data['id_card'],
         ]);
     }

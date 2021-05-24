@@ -25,6 +25,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getCustomAttribute()
+    {
+        return 'Custom attribute';
+    }
 
     public function isTeacher()
     {
@@ -47,12 +51,10 @@ class User extends Authenticatable
     public function courses()
     {
         if ($this->isStudent())
-            return $this->belongsTo(Batch::class)->courses;
+            return $this->belongsTo(Batch::class);
         elseif ($this->isTeacher())
             return $users = DB::table('courses')
                 ->where('teacher', $this)
                 ->get();
-        else
-            return Course::all();
     }
 }
