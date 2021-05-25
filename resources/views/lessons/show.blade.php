@@ -27,12 +27,14 @@
                                 </div>
                                 <div class="info-bx">
                                     <ul class="media-post">
-                                        <li><i class="fa fa-calendar"></i>{{now()->diffInDays($lesson->created_at)}}
+                                        <li>
+                                            <i class="fa fa-calendar"></i> {{$lesson->created_at->toFormattedDateString()}}
                                         </li>
-                                        <li><i class="fa fa-comments-o"></i>8 Comments</li>
+                                        <li><i class="fa fa-comments-o"></i> 8 Comments
+                                        </li>
                                     </ul>
                                     <h5 class="post-title">{{$lesson->title}}</h5>
-                                    <a href="{{route('course.show', $lesson->course)}}"><span>Course: {{$lesson->course->title}}</span></a>
+                                    <a href="{{route('course.show', $lesson->course)}}"><span>Course: {{$lesson->course->name}}</span></a>
                                 </div>
                             </div>
                             <div class="ttr-divider bg-gray"><i class="icon-dot c-square"></i></div>

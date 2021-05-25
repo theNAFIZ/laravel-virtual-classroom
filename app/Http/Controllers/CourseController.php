@@ -56,7 +56,7 @@ class CourseController extends Controller
 
     public function show(Course $course)
     {
-        abort_if(!auth()->user()->user_type == 'Admin' || !auth()->user()->user_type == 'Teacher' || !$course->batch_id == auth()->user()->batch, 403, "You don't have permission to perform the operation.");
+        abort_if(!auth()->user()->user_type == 'Admin' && !auth()->user()->user_type == 'Teacher' && !$course->batch_id == auth()->user()->batch, 403, "You don't have permission to perform the operation.");
 
         return view('courses.show', compact('course'));
     }

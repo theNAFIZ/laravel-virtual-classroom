@@ -27,14 +27,14 @@
                                         </div>
                                         <div class="teacher-name">
                                             <h5>{{$course->instructor->name}}</h5>
-                                            <span>Dept. of {{$course->batch_id->dept}}</span>
+                                            <span>Dept. of {{$course->batch->dept}}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="cours-more-info">
                                     <div class="price categories">
                                         <span>Batch</span>
-                                        <h5 class="text-primary">{{$course->batch_id->title}}</h5>
+                                        <h5 class="text-primary">{{$course->batch->title}}</h5>
                                     </div>
                                 </div>
                                 <div class="course-info-list scroll-page">
@@ -71,7 +71,7 @@
                                             <li><i class="ti-time"></i> <span class="label">Duration</span> <span
                                                         class="value">60 hours</span></li>
                                             <li><i class="ti-user"></i> <span class="label">Students</span> <span
-                                                        class="value">{{$course->batch_id->students}}</span></li>
+                                                        class="value">{{$course->batch->students}}</span></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-12 col-lg-8">
@@ -84,7 +84,7 @@
                                 <h4>Curriculum</h4>
                                 <ul class="curriculum-list">
                                     @foreach($course->lessons as $lesson)
-                                        <a href="{{route('lesson.show', $lesson)}}">
+                                        <a href="{{route('lesson.show', [$course, $lesson])}}">
                                             <li>
                                                 <div class="curriculum-list-box">
                                                     <span>Lesson 1.</span> {{$lesson->name}}

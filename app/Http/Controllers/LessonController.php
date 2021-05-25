@@ -10,14 +10,14 @@ class LessonController extends Controller
 {
     public function create(Course $course)
     {
-        abort_if(!$course->teacher()->is(auth()->user()), 403, "You don't have permission to perform the operation.");
+        abort_if(!$course->instructor->is(auth()->user()), 403, "You don't have permission to perform the operation.");
 
-        return view('lessons.create');
+        return view('lessons.create', compact('course'));
     }
 
     public function store(Course $course)
     {
-        abort_if(!$course->teacher()->is(auth()->user()), 403, "You don't have permission to perform the operation.");
+        abort_if(!$course->instructor->is(auth()->user()), 403, "You don't have permission to perform the operation.");
 
         $data = request()->validate([
             'title' => ['required', 'string', 'max:100'],
@@ -39,20 +39,20 @@ class LessonController extends Controller
 
     public function show(Course $course, Lesson $lesson)
     {
-        //abort_if(!auth()->user()->isAdmin || !auth()->user()->isTeacher || !$course->batch_id->is(auth()->user()->batch), 403, "You don't have permission to watch the lesson.");
+        abort_if(!auth()->user()->isAdmin() && !auth()->user()->isTeacher() && !$course->batch->is(auth()->user()->batch), 403, "You don't have permission to watch the lesson.");
         return view('lessons.show', compact('lesson'));
     }
 
     public function edit(Course $course, Lesson $lesson)
     {
-        abort_if(!$course->teacher()->is(auth()->user()), 403, "You don't have permission to perform the operation.");
+        abort_if(!$course->instructor->is(auth()->user()), 403, "You don't have permission to perform the operation.");
 
         return view('lessons.edit', compact('lesson'));
     }
 
     public function update(Course $course, Lesson $lesson)
     {
-        abort_if(!$course->teacher()->is(auth()->user()), 403, "You don't have permission to perform the operation.");
+        abort_if(!$course->instructor->is(auth()->user()), 403, "You don't have permission to perform the operation.");
 
         $data = request()->validate([
             'title' => ['required', 'string', 'max:100'],

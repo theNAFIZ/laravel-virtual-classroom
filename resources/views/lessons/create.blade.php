@@ -11,7 +11,7 @@
                             <h4>Add New Lesson</h4>
                         </div>
                         <div class="widget-inner">
-                            <form class="edit-profile m-b30" action="{{route('lesson.store')}}" method="POST">
+                            <form class="edit-profile m-b30" action="{{route('lesson.store', $course)}}" method="POST">
                                 @csrf
                                 <div class="row">
                                     <div class="form-group col-6">
@@ -49,9 +49,9 @@
                                         <div>
                                             <select class="form-control" type="text" id="type" name="type">
                                                 <option disabled selected>Select</option>
-                                                <option value="video">Video</option>
-                                                <option value="pdf">PDF</option>
-                                                <option value="other">Other</option>
+                                                <option value="Video">Video</option>
+                                                <option value="Pdf">PDF</option>
+                                                <option value="Other">Other</option>
                                             </select>
                                             @error('type')
                                             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>

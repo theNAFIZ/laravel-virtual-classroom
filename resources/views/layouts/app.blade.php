@@ -59,9 +59,7 @@
 <body class="ttr-opened-sidebar ttr-pinned-sidebar">
 <div id="loading-icon-bx"></div>
 <!-- Content -->
-<div class="row">
-    @yield('content')
-</div>
+@yield('content')
 
 <!-- External JavaScripts -->
 <script src={{asset("js/jquery.min.js")}}></script>

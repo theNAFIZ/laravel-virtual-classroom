@@ -8,10 +8,12 @@
                 <div class="col-lg-12 m-b30">
                     <div class="widget-box">
                         <div class="wc-title">
-                            <h4>Add New Lesson</h4>
+                            <h4>Update Lesson</h4>
                         </div>
                         <div class="widget-inner">
-                            <form class="edit-profile m-b30" action="{{route('lesson.store')}}" method="POST">
+                            <form class="edit-profile m-b30"
+                                  action="{{route('lesson.update',[$lesson->course, $lesson] )}}"
+                                  method="PUT">
                                 @csrf
                                 <div class="row">
                                     <div class="form-group col-6">
@@ -49,10 +51,14 @@
                                         <label for="type" class="col-form-label">File Type</label>
                                         <div>
                                             <select class="form-control" type="text" id="type" name="type">
-                                                <option disabled selected>Select</option>
-                                                <option value="video">Video</option>
-                                                <option value="pdf">PDF</option>
-                                                <option value="other">Other</option>
+                                                <option @if($lesson->type == "Video") selected @endif value="Video">
+                                                    Video
+                                                </option>
+                                                <option @if($lesson->type == "Pdf") selected @endif value="Pdf">PDF
+                                                </option>
+                                                <option @if($lesson->type == "Other") selected @endif value="Other">
+                                                    Other
+                                                </option>
                                             </select>
                                             @error('type')
                                             <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
